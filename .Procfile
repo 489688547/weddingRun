@@ -1,1 +1,1 @@
-web: node run production
+web: node production
