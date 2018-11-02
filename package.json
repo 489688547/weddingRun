@@ -14,6 +14,13 @@
   "author": "Andras Endre",
   "license": "MIT",
   "devDependencies": {
+    
+  },
+  "dependencies": {
+    "@orange-games/phaser-input": "^2.0.4",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "phaser": "^2.4.1",
     "gulp": "^3.9.0",
     "gulp-buffer": "0.0.2",
     "gulp-if": "^1.2.5",
@@ -26,12 +33,5 @@
     "exorcist": "^0.4.0",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^3.16.1"
-  },
-  "dependencies": {
-    "@orange-games/phaser-input": "^2.0.4",
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
-    "phaser": "^2.4.1"
-    
   }
 }
