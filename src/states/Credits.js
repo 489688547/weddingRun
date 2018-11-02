@@ -51,21 +51,21 @@ class Credits extends Phaser.State {
 	};
 
 	addCredits() {
-		let credits = this.getCredits();
-		_.each(credits,_.bind(function(credit){
-			// First add the title
-			let title = this.getStyledText(credit.title,'title');
-	   		this.credits.push(title);
+		let credits = this.getTest();
+		// _.each(credits,_.bind(function(credit){
+		// 	// First add the title
+		// 	let title = this.getStyledText(credit.title,'title');
+	   	// 	this.credits.push(title);
 
-	   		// Increase the initial position for the next credit 
-	   		this.textStackHeight += this.lineHeight;
+	   	// 	// Increase the initial position for the next credit 
+	   	// 	this.textStackHeight += this.lineHeight;
 
-			let name = this.getStyledText(credit.value,'name');
-	   		this.credits.push(name);
+		// 	let name = this.getStyledText(credit.value,'name');
+	   	// 	this.credits.push(name);
 
-	   		// Increase the initial position for the next credit 
-	   		this.textStackHeight += this.separatorHeight;
-		},this));
+	   	// 	// Increase the initial position for the next credit 
+	   	// 	this.textStackHeight += this.separatorHeight;
+		// },this));
 	}
 
 	getStyledText(label,style){
@@ -87,6 +87,18 @@ class Credits extends Phaser.State {
 	  			this.game.state.start('MainMenu');
 			}
 		},this);		
+	}
+
+	getTest(){
+		$.ajax({
+			type: "GET",
+			url: "https://blackstageplay.herokuapp.com/api/users/test",
+			cache: false,
+			success: function(data) {
+				console.log(data)
+			}
+		})
+		
 	}
 
 	getCredits() {
