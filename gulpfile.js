@@ -142,7 +142,7 @@ function serve() {
             baseDir: BUILD_PATH
         },
         notify: true,
-        open: true // Change it to true if you wish to allow Browsersync to open a browser window.
+        open: false // Change it to true if you wish to allow Browsersync to open a browser window.
     };
     
     browserSync(options);
