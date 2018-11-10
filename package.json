@@ -33,5 +33,6 @@
     "exorcist": "^0.4.0",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^3.16.1"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

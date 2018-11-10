@@ -67,7 +67,7 @@ class MainMenu extends Phaser.State {
     	this.playerMenu.destroy();
 
     	let inputWidth = 200;
-    	var input = this.game.add.inputField(this.game.width/2-inputWidth/2, 250,{
+    	var input = this.game.add.inputField(this.game.width/2-inputWidth/2, 220,{
 		    font: '30px arcade',
 		    fill: '#212121',
 		    width: inputWidth,
@@ -75,19 +75,24 @@ class MainMenu extends Phaser.State {
 		    borderWidth: 3,
 		    borderColor: '#0b77a5',
 		    borderRadius: 4,
-		    placeHolder: 'Type your name',
-		});
-		input.setText(this.game.Settings.playerName);
-		input.startFocus();
+		    placeHolder: 'BSP Username',
+			});
+			input.setText(this.game.Settings.player.playerName);
+			input.startFocus();
 
-		var inputLabel = this.game.add.text(this.game.width/2, 230,'- Enter your name and hit ENTER -');
-	    inputLabel.anchor.set(0.5);
-	    inputLabel.align = 'center';
-	    inputLabel.font = 'arcade';
-	    inputLabel.fontSize = 25;
-	    inputLabel.fill = '#FFFFFF';
+			var input2 = this.game.add.inputField(this.game.width/2-inputWidth/2, 300,{
+				font: '30px arcade',
+				fill: '#212121',
+				width: inputWidth,
+				padding: 10,
+				borderWidth: 3,
+				borderColor: '#0b77a5',
+				borderRadius: 4,
+				placeHolder: 'BSP Password',
+			});
+			input2.setText(this.game.Settings.player.playerPassword);
 
-	    var nameDescription = this.game.add.text(this.game.width/2, 340,'this is optional');
+	    var nameDescription = this.game.add.text(this.game.width/2, 400,'Press ENTER !');
 	    nameDescription.anchor.set(0.5);
 	    nameDescription.align = 'center';
 	    nameDescription.font = 'arcade';
@@ -97,7 +102,8 @@ class MainMenu extends Phaser.State {
 	    // Register 
 	    this.game.input.keyboard.onUpCallback = _.bind(function(e){
 			if(e.keyCode == Phaser.Keyboard.ENTER) {
-	    		this.game.Settings.playerName = input.value;
+				this.game.Settings.player.playerName = input.value;
+				this.game.Settings.player.playerPassword = input2.value;
 				this.startGame();
 			}
 		},this);
@@ -109,16 +115,30 @@ class MainMenu extends Phaser.State {
 
     showHighScores() {
     	this.state.start('HighScores');
-    }
-
-    startGame() {
-    	this.state.start('Main');
-    }
+		}
+		
+		startGame(){
+			let that=this
+			$.ajax({
+				type: "POST",
+				url: "https://blackstageplay.herokuapp.com/api/users/login",
+				dataType: "json",
+				data: {'username':that.game.Settings.player.playerName, 'password':that.game.Settings.player.playerPassword},
+				success: function(res) {
+					that.game.Settings.token = res.token
+					that.state.start('Main');
+				},
+				error:function(err){
+					console.log(err)
+				}
+			})
+		}
 
 	shutdown() {
 		this.mainMenu.destroy();
 		this.music.destroy();
 	}
+
 
 	createHeader() {
 		var headerOffset = 80;

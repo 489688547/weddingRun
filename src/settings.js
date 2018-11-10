@@ -23,11 +23,12 @@ export default {
 	// Constants for score calculations
 	,'score' : {
 		// How much does it worth to travel 1 pixel
-		'pixel' : 1
+		'pixel' : 0.5
 		// How much does a coin worth
-		,'coin' : 100
+		,'coin' : 1
 		// Kill bounty = enemy velocity x scale
 		,'enemy' : 0.8
+		,'got':''
 	}
 
 	// There are some events that happen regularly (ms)
@@ -75,5 +76,10 @@ export default {
 	}
 
 	// Name of the player
-	,'playerName': ''
+	,'player': {
+		'playerName': ''
+		,'playerPassword': ''
+	}
+	// User Token
+	,'token':''
 };

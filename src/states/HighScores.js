@@ -13,8 +13,23 @@ class HighScores extends Phaser.State {
 	    this.loadingText.fontSize = 40;
 	    this.loadingText.fill = '#504c39';	   
 
-		let results = ToplistService.getTop10();
-		this.renderHighScores(results);
+		// let results = ToplistService.getTop10();
+		// this.renderHighScores(results);
+		let that=this
+		$.ajax({
+			type: "POST",
+			url: "https://blackstageplay.herokuapp.com/api/game/all",
+			data: {gameName:"wr"},
+			dataType: "json",
+			success: function(res) {
+				console.log(res)
+				res.map(res => console.log(res))
+				that.renderHighScores(res);
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
 	}
 
 	update() {
@@ -43,15 +58,16 @@ class HighScores extends Phaser.State {
 		
 		let topListOffset = 120;
 		let lineHeight = 35;
+		console.log(toplist)
 
 		_.each(toplist,_.bind(function(item,index){
-			let value = (index+1)+'.  '+item.playerName + "\t\t" + item.score;
-			let playerName = this.game.add.text(130, topListOffset + lineHeight*index,value);
-		    playerName.align = 'left';
-		    playerName.font = 'arcade';
-		    playerName.fontSize = 40;
-		    playerName.fill = '#504c39';
-		    playerName.tabs = 400;
+			let value = (index+1)+'.  '+item.userName + "\t\t" + item.score;
+			let userName = this.game.add.text(130, topListOffset + lineHeight*index,value);
+		    userName.align = 'left';
+		    userName.font = 'arcade';
+		    userName.fontSize = 40;
+		    userName.fill = '#504c39';
+		    userName.tabs = 400;
 		},this));
 	}
 }

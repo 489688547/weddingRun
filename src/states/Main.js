@@ -101,12 +101,13 @@ class Main extends Phaser.State {
 
 		// Show game over screen
 		this.showGameOver();
-
+		
 		// Save settings in the background
-		ToplistService.saveScore(this.game.Settings.playerName,this.calculateScore());
+		ToplistService.saveScore(this.game.Settings.player.playerName,this.calculateScore());
 	}
 
 	showGameOver() {
+		this.game.Settings.score.got = this.calculateScore()
 		var gameOverText = this.game.add.text(this.game.width/2, 100,'GAME OVER');
 	    gameOverText.anchor.set(0.5);
 	    gameOverText.align = 'center';
@@ -116,7 +117,7 @@ class Main extends Phaser.State {
 	    gameOverText.stroke = '#FFFFFF';
     	gameOverText.strokeThickness = 6;
 
-    	var restartText = this.game.add.text(this.game.width/2, 200,'ENTER - Restart the game\n ESC - Go to main menu');
+    var restartText = this.game.add.text(this.game.width/2, 200,`You got ${this.game.Settings.score.got}\nENTER - Restart the game\n ESC - Go to main menu`);
 	    restartText.anchor.set(0.5);
 	    restartText.align = 'center';
 	    restartText.font = 'arcade';
@@ -143,7 +144,7 @@ class Main extends Phaser.State {
 		    this.enemies.update();
 		 
 		    // Update score
-		    this.score.update(this.calculateScore());
+				this.score.update(this.calculateScore());
 
 		    // Handle coin collection
 		    this.game.physics.arcade.collide(this.player.getObject(), this.coins.getObject(), this.collectCoin, _.noop, this);
