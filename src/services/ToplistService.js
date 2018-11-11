@@ -30,7 +30,7 @@ class ToplistService {
 		console.log(Settings.token)
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:5000/api/game/updateScore",
+			url: "https://blackstageplay.herokuapp.com/api/game/updateScore",
 			headers: {"Authorization": Settings.token},
 			data: {'name':"wr",'userName':playerName, 'score':score},
 			dataType: "json",
