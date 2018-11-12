@@ -13,9 +13,7 @@
   },
   "author": "Andras Endre",
   "license": "MIT",
-  "devDependencies": {
-    
-  },
+  "devDependencies": {},
   "dependencies": {
     "@orange-games/phaser-input": "^2.0.4",
     "jquery": "^3.2.1",
