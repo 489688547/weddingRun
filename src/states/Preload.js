@@ -17,7 +17,7 @@ class Preload extends Phaser.State {
 				url: `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries/${API_ENTRY_ID}?access_token=${API_TOKEN}&content_type=artist`,
 				dataType: "json",
 				success: function(res) {
-					console.log(res)
+					console.log("vision:116")
 					Settings.artistName = res.fields.slug
 					Settings.backgroundImageId = res.fields.backgroundImage.sys.id
 					Settings.backgroundMusicId = res.fields.backgroundMusic.sys.id

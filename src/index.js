@@ -14,8 +14,6 @@ class Game extends Phaser.Game {
 		// Store game settings
 		this.Settings = Settings;
 
-		
-
 		// Define game states
 		this.state.add('Preload', Preload, false);
 		this.state.add('MainMenu', MainMenu, false);
