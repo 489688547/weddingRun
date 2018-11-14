@@ -20,14 +20,7 @@ class ToplistService {
 		 *   });
 		 *
 		 **/ 
-		// $.post(Settings.urls.saveScore,{
- 	  // 	'playerName' : player.playerName
-		// 	,'score' : score
-		// 	})
-		// 	.done(function(data) {
-		// 	console.log('data was saved')
-		// 	});
-		console.log(Settings.token)
+
 		$.ajax({
 			type: "POST",
 			url: "https://blackstageplay.herokuapp.com/api/game/updateScore",
@@ -35,7 +28,7 @@ class ToplistService {
 			data: {'name':"wr",'userName':playerName, 'score':score, 'artistName':Settings.artistName},
 			dataType: "json",
 			success: function(res) {
-				console.log(res)
+				console.log("score saved")
 			},
 			error:function(err){
 				console.log(err)
