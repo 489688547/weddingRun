@@ -32,7 +32,7 @@ class ToplistService {
 			type: "POST",
 			url: "https://blackstageplay.herokuapp.com/api/game/updateScore",
 			headers: {"Authorization": Settings.token},
-			data: {'name':"wr",'userName':playerName, 'score':score},
+			data: {'name':"wr",'userName':playerName, 'score':score, 'artistName':Settings.artistName},
 			dataType: "json",
 			success: function(res) {
 				console.log(res)
@@ -51,10 +51,9 @@ class ToplistService {
 		$.ajax({
 			type: "POST",
 			url: "https://blackstageplay.herokuapp.com/api/game/all",
-			data: {gameName:"wr"},
+			data: {gameName:"wr",artistName:Settings.artistName},
 			dataType: "json",
 			success: function(res) {
-				console.log(res)
 				res.map(res => console.log(res))
 				return res
 			},

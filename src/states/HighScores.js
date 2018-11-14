@@ -22,8 +22,6 @@ class HighScores extends Phaser.State {
 			data: {gameName:"wr"},
 			dataType: "json",
 			success: function(res) {
-				console.log(res)
-				res.map(res => console.log(res))
 				that.renderHighScores(res);
 			},
 			error:function(err){
@@ -58,7 +56,6 @@ class HighScores extends Phaser.State {
 		
 		let topListOffset = 120;
 		let lineHeight = 35;
-		console.log(toplist)
 
 		_.each(toplist,_.bind(function(item,index){
 			let value = (index+1)+'.  '+item.userName + "\t\t" + item.score;

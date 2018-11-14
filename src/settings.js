@@ -82,4 +82,8 @@ export default {
 	}
 	// User Token
 	,'token':''
+	,'artistName':''
+	,'backgroundImageId':''
+	,'backgroundMusicId':''
+	,'backgroundMusicURL':''
 };
