@@ -2251,7 +2251,7 @@ var Preload = (function (_Phaser$State) {
 					url: API_BASE_URL + '/spaces/' + API_SPACE_ID + '/entries/' + API_ENTRY_ID + '?access_token=' + API_TOKEN + '&content_type=artist',
 					dataType: "json",
 					success: function success(res) {
-						console.log("vision:3.0");
+						console.log("vision:4.0");
 						_settings2['default'].artistName = res.fields.slug;
 						_settings2['default'].backgroundImageId = res.fields.backgroundImage.sys.id;
 						_settings2['default'].backgroundMusicId = res.fields.backgroundMusic.sys.id;
